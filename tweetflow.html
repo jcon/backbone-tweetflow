@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>TweetFlow</title>
+    <link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Chivo:400,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Pontano+Sans' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="header">
+        <form>
+          <input class="filter" type="text" value="bcAlbany" />
+        </form>
+        <h1>Tweetflow</h1>
+      </div>
+      <ul id="tweets">
+      </ul>
+      <div id="content">
+      </div>
+      <div id="footer">
+      </div>
+    </div>
+    <script id="tweet-item-tpl" type="text/template">
+      <a href="#status/<%= id %>"><img src="<%= profile_image_url %>" /></a>
+    </script>
+    <script id="tweet-tpl" type="text/template">
+      <img src="<%= profile_image_url %>" />
+      <h2><%= from_user_name %></h2>
+      <h3>@<%= from_user %></h3>
+      <p><%= text %></p>
+    </script>
+    <script type="text/javascript" src="javascripts/lib/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="javascripts/lib/underscore.js"></script>
+    <script type="text/javascript" src="javascripts/lib/backbone.js"></script>
+    <script type="text/javascript" src="javascripts/models.js"></script>
+    <script type="text/javascript" src="javascripts/views.js"></script>
+    <script type="text/javascript" src="javascripts/app.js"></script>
+  </body>
+</html>

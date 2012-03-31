@@ -1,0 +1,68 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+
+@import "960/grid";
+
+$ninesixty-columns: 16;
+
+#wrapper {
+  @include grid-container;
+  margin-top: 4em;
+  #header {
+    @include grid(16);
+    form {
+      @include grid(4);
+      @include alpha;
+      input {
+        font-size: 18pt;
+        margin-top: 1em;
+        width: 220px - 20px;
+        border: none;
+        background: #cdcdcd;
+        padding: 10px;
+      }
+    }
+    h1 {
+      @include grid(12);
+      @include omega;
+      font-family: 'Chivo', sans-serif;
+      font-size: 42pt;
+      color: #558E28;
+      margin: .25em 0 .25em 10px;
+    }
+  }
+  #tweets {
+    @include grid(4);
+  }
+  #content {
+    @include grid(12);
+    img {
+      @include grid(1);
+      @include alpha;
+    }
+    h2, h3 {
+      font-family: 'Montserrat', sans-serif;
+      display: inline-block;
+      margin-top: .25em;
+    }
+    h2 {
+      font-size: 26pt;
+    }
+    h3 {
+      font-size: 24pt;
+      color: lighten(#2E6FFD, 15%);
+    }
+    p {
+      @include grid(12);
+      @include alpha;
+      @include omega;
+      margin-top: .5em;
+      font-family: 'Pontano Sans', sans-serif;
+      font-size: 30pt;
+    }
+  }
+}
