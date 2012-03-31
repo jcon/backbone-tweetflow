@@ -2,10 +2,17 @@ $(function() {
   var tf = window.tf || {};
   window.tf = tf;
 
+  // tf.App is a root level Backbone router that organizes this app's views.
+  // --------------------------------------------------------------------------
   var App = tf.App = Backbone.Router.extend({
+    // Listen for changes in the URL #status/<tweet-id>.  We will then
+    // re-render the DOM node under content to display the tweet identified
+    // by that ID.
     routes: {
       'status/:id': 'viewStatus'
     },
+    // Override the initialize function to create instances of our Tweets
+    // collection and wire it up to instances of our views.
     initialize: function() {
       this.tweets = new tf.models.Tweets();
       this.tweetsView = new tf.views.Tweets({
@@ -25,8 +32,11 @@ $(function() {
     },
     filterChanged: function(f) {
       this.tweets.query = f;
-      this.tweets.fetch();
+      this.tweets.fetch(); // execute an underlying GET against Twitter's search.
     },
+    // Whenever the hash changes in the URL matching the route defined
+    // in routes, we'll extract the ID and display the underlying tweet.
+    // This code is intentionally simple, but brittle for real world use.
     viewStatus: function(id) {
       var tweet = this.tweets.get(Number(id));
       var view = new tf.views.TweetView({model: tweet});
@@ -34,10 +44,15 @@ $(function() {
     }
   });
 
+  // Wire up the root instances of our app.  We'll create an instance of our
+  // app router, and then tell the underlying Tweets collection instance
+  // to fetch its date.  We could have also called app.tweets.reset( <json list>)
+  // if this template were rendered with an initial JSON value.
+  // --------------------------------------------------------------------------
   var app = tf.app = new App();
 
   app.tweets.fetch();
 
-  Backbone.history.start();//{pushState: true});
-
+  // Begin listening for changes in the URL hash.
+  Backbone.history.start();
 });
