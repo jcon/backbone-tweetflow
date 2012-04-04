@@ -5,6 +5,8 @@ This is a simple demonstration of using Backbone.js to organize your JavaScript
 more scalably.  This demonstration was originally shown at BarCampAlbany #bcAlbany
 on 3/31/12.
 
+The slides for the presentation are located [here](http://speakerdeck.com/u/jcon/p/introduction-to-backbonejs).
+
 Files
 -----
 
